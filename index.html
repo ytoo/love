@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>--来自爱你的姚先生</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      http-equiv="Cache-Control"
+      content="width=device-width, initial-scale=1,no-cache"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
@@ -24,6 +28,7 @@
         justify-content: center;
         overflow: hidden;
       }
+
       .stars {
         position: absolute;
         top: 0;
@@ -71,12 +76,13 @@
         }
       }
       h1 {
-        font-size: calc(0.5em + 5vw);
+        font-size: calc(0.5em + 3vw);
         color: #fff;
         font-family: "Caveat", sans-serif;
         text-align: center;
         padding: 0.5em;
         transform: rotate(-4deg) translateY(-15vh);
+        width: 100%;
       }
 
       .mountains {
@@ -116,7 +122,6 @@
         position: absolute;
         top: 150px;
         left: 50%;
-        /* transform: translateX(-50%); */
         animation: heartbeat 1s infinite;
       }
 
@@ -145,7 +150,7 @@
         font-weight: bold;
         margin-top: 20px;
         text-align: center;
-         color: pink;
+        color: pink;
         position: absolute;
         top: 150px;
         left: 50%;
@@ -174,16 +179,16 @@
   </head>
   <body>
     <!-- partial:index.partial.html -->
-    <div class="heart" id="btn"></div>
-    <div class="name fade-in">余奇芳</div>
+    <div class="heart"></div>
+    <div class="name fade-in" id="btn">余奇芳</div>
     <h1 id="title">--来自爱你的姚先生</h1>
     <div class="stars"></div>
-    <video
-      id="video"
-      src="https://www.freesound.org/data/previews/21/21410_21830-lq.mp3"
+    <audio
+      id="audio"
+      src="https://m704.music.126.net/20240105124234/bbc5cf1903f7b1864a5aa97a3c647218/jdymusic/obj/w5zDlMODwrDDiGjCn8Ky/1513292449/84b1/a3ce/2e13/31f1b5ac2e50f00e322e9addfb2abf4e.mp3?authSecret=0000018cd7d7354816580aaba24f0463"
+      controls
       autoplay
-      muted
-    ></video>
+    ></audio>
     <svg
       class="mountains mountains--layer1"
       xmlns="http://www.w3.org/2000/svg"
@@ -214,6 +219,14 @@
     <!-- partial -->
     <script src="https://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script>
+      const videoDom = document.getElementById("audio");
+      const btnDom = document.getElementById("btn");
+
+      //点击之后允许播放声音
+      btnDom.addEventListener("click", () => {
+        console.log(videoDom.autoplay);
+        videoDom.muted = false;
+      });
       const B_CHILD = {
         fill: { "#ffffff": "#ef1cec" },
         delay: "rand(300, 359)",
@@ -388,14 +401,6 @@
       })
         .add([fw1, fw2])
         .play();
-
-      const videoDom = document.getElementById("video");
-      const btnDom = document.getElementById("btn");
-
-      //点击之后允许播放声音
-      btnDom.addEventListener("click", () => {
-        videoDom.muted = false;
-      });
     </script>
   </body>
 </html>
